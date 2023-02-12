@@ -377,6 +377,105 @@ export const createStakeEntryAndStakeMint = async (
  * @param stakeEntryId - Original mint id
  * @returns
  */
+export const claimReward = async (
+  connection: Connection,
+  wallet: Wallet,
+  params: {
+    stakePoolId: PublicKey;
+    stakeEntryId: PublicKey;
+    lastStaker?: PublicKey;
+    payer?: PublicKey;
+  }
+): Promise<Transaction> => {
+  const stakeEntryId = params.stakeEntryId;
+
+  /////// derive ids ///////
+  const rewardDistributorId = findRewardDistributorId(params.stakePoolId);
+  const rewardEntryId = findRewardEntryId(rewardDistributorId, stakeEntryId);
+
+  /////// get accounts ///////
+  const rewardDistributorData = await tryNull(() =>
+    getRewardDistributor(connection, rewardDistributorId)
+  );
+  if (!rewardDistributorData) throw "No reward distributor found";
+  const rewardEntry = await tryGetAccount(() =>
+    getRewardEntry(connection, rewardEntryId)
+  );
+
+  const rewardMintTokenAccountId = getAssociatedTokenAddressSync(
+    rewardDistributorData.parsed.rewardMint,
+    params.lastStaker ?? wallet.publicKey,
+    true
+  );
+  const tx = new Transaction();
+  /////// update seconds ///////
+  await withUpdateTotalStakeSeconds(tx, connection, wallet, {
+    stakeEntryId,
+    lastStaker: wallet.publicKey,
+  });
+  /////// init ata ///////
+  tx.add(
+    createAssociatedTokenAccountIdempotentInstruction(
+      params.payer ?? wallet.publicKey,
+      rewardMintTokenAccountId,
+      params.lastStaker ?? wallet.publicKey,
+      rewardDistributorData.parsed.rewardMint
+    )
+  );
+  /////// init entry ///////
+  if (!rewardEntry) {
+    const ix = await rewardDistributorProgram(connection, wallet)
+      .methods.initRewardEntry()
+      .accounts({
+        rewardEntry: rewardEntryId,
+        stakeEntry: stakeEntryId,
+        rewardDistributor: rewardDistributorData.pubkey,
+        payer: params.payer ?? wallet.publicKey,
+        systemProgram: SystemProgram.programId,
+      })
+      .instruction();
+    tx.add(ix);
+  }
+  /////// claim rewards ///////
+  const ix = await rewardDistributorProgram(connection, wallet)
+    .methods.claimRewards()
+    .accounts({
+      rewardEntry: rewardEntryId,
+      rewardDistributor: rewardDistributorData.pubkey,
+      stakeEntry: stakeEntryId,
+      stakePool: params.stakePoolId,
+      rewardMint: rewardDistributorData.parsed.rewardMint,
+      userRewardMintTokenAccount: rewardMintTokenAccountId,
+      rewardManager: REWARD_MANAGER,
+      user: params.payer ?? wallet.publicKey,
+      tokenProgram: TOKEN_PROGRAM_ID,
+      systemProgram: SystemProgram.programId,
+    })
+    .remainingAccounts([
+      {
+        pubkey: getAssociatedTokenAddressSync(
+          rewardDistributorData.parsed.rewardMint,
+          rewardDistributorData.pubkey,
+          true
+        ),
+        isSigner: false,
+        isWritable: true,
+      },
+    ])
+    .instruction();
+  tx.add(ix);
+
+  return tx;
+};
+
+/**
+ * Convenience method to claim rewards
+ * @param connection - Connection to use
+ * @param wallet - Wallet to use
+ * @param stakePoolId - Stake pool id
+ * @param stakeEntryId - Original mint id
+ * @returns
+ */
 export const claimRewards = async (
   connection: Connection,
   wallet: Wallet,
