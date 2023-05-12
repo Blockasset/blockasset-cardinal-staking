@@ -680,6 +680,7 @@ export const stakeAll = async (
       amount?: BN;
       receiptType?: ReceiptType;
     }[];
+    ignoreSetComputeUnitLimit?: boolean;
   }
 ): Promise<{ tx: Transaction; signers?: Signer[] }[][]> => {
   /////// derive ids ///////
@@ -815,11 +816,12 @@ export const stakeAll = async (
       mintMetadata?.tokenStandard === TokenStandard.ProgrammableNonFungible &&
       mintMetadata.programmableConfig?.ruleSet
     ) {
-      transaction.add(
-        ComputeBudgetProgram.setComputeUnitLimit({
-          units: 100000000,
-        })
-      );
+      if (!params.ignoreSetComputeUnitLimit)
+        transaction.add(
+          ComputeBudgetProgram.setComputeUnitLimit({
+            units: 100000000,
+          })
+        );
       /////// programmable ///////
       transaction.add(
         await stakePoolProgram(connection, wallet)
@@ -993,6 +995,7 @@ export const unstakeAll = async (
       stakeEntryId?: PublicKey;
       fungible?: boolean;
     }[];
+    ignoreSetComputeUnitLimit?: boolean;
   }
 ): Promise<{ tx: Transaction; signers?: Signer[] }[][]> => {
   /////// derive ids ///////
@@ -1167,11 +1170,12 @@ export const unstakeAll = async (
       tokenRecordData?.delegateRole === TokenDelegateRole.Staking
     ) {
       /////// programmable ///////
-      tx.add(
-        ComputeBudgetProgram.setComputeUnitLimit({
-          units: 100000000,
-        })
-      );
+      if (!params.ignoreSetComputeUnitLimit)
+        tx.add(
+          ComputeBudgetProgram.setComputeUnitLimit({
+            units: 100000000,
+          })
+        );
       const ix = await stakePoolProgram(connection, wallet)
         .methods.unstakeProgrammable()
         .accountsStrict({
@@ -1273,11 +1277,12 @@ export const unstakeAll = async (
       const program = stakePoolProgram(connection, wallet);
 
       if (mintMetadata?.programmableConfig?.ruleSet) {
-        tx.add(
-          ComputeBudgetProgram.setComputeUnitLimit({
-            units: 100000000,
-          })
-        );
+        if (!params.ignoreSetComputeUnitLimit)
+          tx.add(
+            ComputeBudgetProgram.setComputeUnitLimit({
+              units: 100000000,
+            })
+          );
         const ix = await program.methods
           .unstakeCustodialProgrammable()
           .accountsStrict({
