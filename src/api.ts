@@ -1142,7 +1142,9 @@ export const unstakeAll = async (
             receiptMint,
             tokenManagerData,
             stakeEntryId,
-            mintMetadata
+            receiptMint.equals(stakeEntry.parsed.originalMint)
+              ? mintMetadata
+              : null
           );
           const ix = await stakePoolProgram(connection, wallet)
             .methods.returnReceiptMint()
