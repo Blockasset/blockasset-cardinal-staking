@@ -1,3 +1,6 @@
+> **Warning**
+> This repo is deprecated in favor of a v2 protocol that can be found here https://github.com/cardinal-labs/cardinal-rewards-center
+
 # Cardinal Staking
 
 [![License](https://img.shields.io/badge/license-AGPL%203.0-blue)](https://github.com/cardinal-labs/cardinal-staking/blob/master/LICENSE)
