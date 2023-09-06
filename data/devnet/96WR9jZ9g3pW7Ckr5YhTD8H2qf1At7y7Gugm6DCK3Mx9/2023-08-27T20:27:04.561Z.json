@@ -1,0 +1,85 @@
+{
+  "stakePool": {
+    "account": {
+      "data": "{\"type\":\"Buffer\",\"data\":[121,34,206,21,79,127,255,28,255,224,0,0,0,0,0,0,0,44,61,136,81,179,142,194,210,36,238,202,150,247,3,253,239,26,237,136,248,20,150,69,68,251,140,16,218,211,164,0,157,1,0,0,0,86,177,203,29,176,242,48,87,160,221,190,156,254,233,60,198,192,249,156,105,224,223,177,138,188,148,165,72,195,74,232,49,1,0,0,0,86,177,203,29,176,242,48,87,160,221,190,156,254,233,60,198,192,249,156,105,224,223,177,138,188,148,165,72,195,74,232,49,0,6,0,0,0,83,84,65,75,69,68,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]}",
+      "executable": false,
+      "lamports": 4134240,
+      "owner": "stkBL96RZkjY5ine4TvPihGqW8UHJfch2cokjAPzV8i",
+      "rentEpoch": 371,
+      "space": 466
+    },
+    "pubkey": "96WR9jZ9g3pW7Ckr5YhTD8H2qf1At7y7Gugm6DCK3Mx9",
+    "parsed": {
+      "bump": "255",
+      "identifier": "224",
+      "authority": "3yhMnW4ge7oBZGqxLj2Fug3UvWTjx9cpaFd1rcymVEnx",
+      "requiresCreators": "6qRJbg8VfBnxbKFkNv14mnHHMmz44i7N6x6bbjbfQ36G",
+      "requiresCollections": "6qRJbg8VfBnxbKFkNv14mnHHMmz44i7N6x6bbjbfQ36G",
+      "requiresAuthorization": "false",
+      "overlayText": "STAKED",
+      "imageUri": "",
+      "resetOnStake": "false",
+      "totalStaked": "1"
+    }
+  },
+  "rewardDistributor": {
+    "timestamp": 1693168017578,
+    "pubkey": "38RCxyGCoY3TMJXq4VAQRtEEtJ8AtWdSBt6JAAW8ftrr",
+    "data": "{\"type\":\"Buffer\",\"data\":[215,10,217,199,104,194,97,227,254,120,70,169,33,232,111,217,0,201,228,163,194,84,159,40,219,38,49,102,182,87,9,221,174,43,232,228,179,11,177,234,30,2,44,61,136,81,179,142,194,210,36,238,202,150,247,3,253,239,26,237,136,248,20,150,69,68,251,140,16,218,211,164,0,157,253,243,4,151,68,49,8,2,111,202,185,78,229,104,47,32,253,53,97,68,104,190,183,180,123,131,229,37,7,132,59,151,0,242,5,42,1,0,0,0,60,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,64,122,16,243,90,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]}",
+    "executable": false,
+    "lamports": 2561280,
+    "owner": "rwdNPNPS6zNvtF6FMvaxPRjzu2eC51mXaDT9rmWsojp",
+    "rentEpoch": 371,
+    "space": 240,
+    "type": "rewardDistributor",
+    "parsed": {
+      "bump": "254",
+      "stakePool": "96WR9jZ9g3pW7Ckr5YhTD8H2qf1At7y7Gugm6DCK3Mx9",
+      "kind": "2",
+      "authority": "3yhMnW4ge7oBZGqxLj2Fug3UvWTjx9cpaFd1rcymVEnx",
+      "rewardMint": "J6K5HMGJ4MhaCngQE1HULHeN4mwAEQ1jQZN98mEY58nz",
+      "rewardAmount": "5000000000",
+      "rewardDurationSeconds": "60",
+      "rewardsIssued": "100000000000000",
+      "defaultMultiplier": "1",
+      "multiplierDecimals": "0"
+    }
+  },
+  "rewardDistributorTokenAccount": {
+    "address": "Etcj3c5FaiJFmYsBSAotwsSqLg5LXPhCCpFDMijyp2MT",
+    "mint": "J6K5HMGJ4MhaCngQE1HULHeN4mwAEQ1jQZN98mEY58nz",
+    "owner": "38RCxyGCoY3TMJXq4VAQRtEEtJ8AtWdSBt6JAAW8ftrr",
+    "amount": "0",
+    "delegate": null,
+    "delegatedAmount": "0",
+    "isInitialized": true,
+    "isFrozen": false,
+    "isNative": false,
+    "closeAuthority": null,
+    "tlvData": {
+      "type": "Buffer",
+      "data": "[]"
+    }
+  },
+  "stakeEntries": [],
+  "rewardEntries": [
+    {
+      "account": {
+        "data": "{\"type\":\"Buffer\",\"data\":[208,191,173,14,213,84,179,162,255,179,53,202,176,190,227,156,114,11,175,180,225,226,74,52,139,95,52,39,43,104,73,248,84,107,227,150,110,102,116,24,160,31,157,207,69,209,206,121,103,100,9,92,19,67,93,126,180,92,113,116,247,75,81,187,238,212,195,229,17,166,162,15,183,128,79,18,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]}",
+        "executable": false,
+        "lamports": 2060160,
+        "owner": "rwdNPNPS6zNvtF6FMvaxPRjzu2eC51mXaDT9rmWsojp",
+        "rentEpoch": 371,
+        "space": 168
+      },
+      "pubkey": "7m7jytHqogbnXho4K9igY52KkzQLjy2KeNTQJqYC3zZm",
+      "parsed": {
+        "bump": "255",
+        "stakeEntry": "D4ZYzbZLo8R2GRPnPKYrHjCMWch2AD5kcPHjULYutWHM",
+        "rewardDistributor": "38RCxyGCoY3TMJXq4VAQRtEEtJ8AtWdSBt6JAAW8ftrr",
+        "rewardSecondsReceived": "1200000",
+        "multiplier": "1"
+      }
+    }
+  ]
+}
